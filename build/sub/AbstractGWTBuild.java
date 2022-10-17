@@ -98,6 +98,7 @@ abstract public class AbstractGWTBuild extends JavaBuilder
 
         addClasspathItem(new File("plugins/com.gwtplugins.gdt.eclipse.apiclientlib/libs/google-http-client-1.16.0-rc.jar").getAbsolutePath());
         addClasspathItem(new File("plugins/com.gwtplugins.gdt.eclipse.apiclientlib/libs/jetty-util-6.1.26.jar").getAbsolutePath());
+        addClasspathItem(new File("plugins/com.gwtplugins.gdt.eclipse.apiclientlib/libs/maven.compatibility.jar").getAbsolutePath());
         addClasspathItem(new File("plugins/com.gwtplugins.gwt.eclipse.oophm/libs/gwt-dev-transport.jar").getAbsolutePath());
         addClasspathItem(new File("plugins/com.gwtplugins.gwt.eclipse.core/libs/gwt-dev.jar").getAbsolutePath());
         addClasspathItem(new File("plugins/com.gwtplugins.gwt.eclipse.core/libs/gwt-user.jar").getAbsolutePath());
@@ -243,12 +244,20 @@ abstract public class AbstractGWTBuild extends JavaBuilder
 
     protected void addEclipseJarToClasspath(String plugin) throws IOException
     {
+        String purl = plugin;
         File file = new File(Config.TMP, "eclipse/plugins/" + plugin);
+        if( purl.startsWith("http") )
+        {
+            file = new File(Config.TMP, "eclipse/plugins/" + file.getName());
+        }
+        else
+        {
+            purl = Config.ECLIPSE_URL + "/plugins/" + plugin;
+        }
+        URL url = new URL(purl);
         if(file.exists() == false)
         {
             file.getParentFile().mkdirs();
-            String purl = Config.ECLIPSE_URL + "/plugins/" + plugin;
-            URL url = new URL(purl);
             BufferedInputStream in = new BufferedInputStream(url.openStream());
             BufferedOutputStream out = new BufferedOutputStream(new FileOutputStream(file));
             Utilities.copy(in, out);
