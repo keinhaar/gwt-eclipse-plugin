@@ -7,7 +7,7 @@ Bundle-Name: %pluginName
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Bundle-SymbolicName: com.gwtplugins.gdt.eclipse.maven;singleton:=true
 Bundle-Vendor: %providerName
-Bundle-Version: 3.0.0.100
+Bundle-Version: 3.0.0.101
 Export-Package: com.google.gdt.eclipse.maven,
  com.google.gdt.eclipse.maven.configurators,
  com.google.gdt.eclipse.maven.launch,
@@ -23,4 +23,5 @@ Require-Bundle: com.gwtplugins.gdt.eclipse.core,
  org.eclipse.jdt.launching,
  org.eclipse.m2e.core;resolution:=optional,
  org.eclipse.m2e.maven.runtime;resolution:=optional,
- org.eclipse.ui
+ org.eclipse.ui,
+ com.gwtplugins.gdt.eclipse.apiclientlib;bundle-version="3.0.0"

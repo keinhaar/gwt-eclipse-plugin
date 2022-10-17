@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: com.gwtplugins.gwt.eclipse.wtp.maven;singleton:=true
-Bundle-Version: 3.0.0.100
+Bundle-Version: 3.0.0.101
 Bundle-Localization: plugin
 Bundle-Activator: com.google.gwt.eclipse.wtp.maven.GwtMavenPlugin
 Bundle-Vendor: %providerName
@@ -27,5 +27,7 @@ Require-Bundle: org.eclipse.core.resources,
  org.eclipse.wst.server.ui,
  org.eclipse.wst.server.core,
  com.gwtplugins.gwt.eclipse.wtp,
- com.gwtplugins.gwt.eclipse.core
+ com.gwtplugins.gwt.eclipse.core,
+ com.gwtplugins.gdt.eclipse.apiclientlib;bundle-version="3.0.0"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-ClassPath: .
